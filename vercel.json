@@ -19,8 +19,16 @@
       "dest": "/server/src/vercel.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/client/assets/$1"
+    },
+    {
+      "src": "/vite.svg",
+      "dest": "/client/vite.svg"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/client/index.html"
     }
   ]
 }
