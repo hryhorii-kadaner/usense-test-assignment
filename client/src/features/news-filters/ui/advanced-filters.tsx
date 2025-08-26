@@ -2,14 +2,12 @@ import React from 'react';
 import { formatDate } from '../../../shared/utils';
 
 export interface NewsFilters {
-  sources?: string;
   domains?: string;
   excludeDomains?: string;
   from?: string;
   to?: string;
   language?: string;
   searchIn?: string;
-  country?: string;
   category?: 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology';
 }
 
@@ -32,15 +30,6 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
     { code: 'fr', name: 'Français' },
     { code: 'es', name: 'Español' },
     { code: 'it', name: 'Italiano' },
-  ];
-
-  const countries = [
-    { code: 'us', name: 'США' },
-    { code: 'ua', name: 'Україна' },
-    { code: 'gb', name: 'Великобританія' },
-    { code: 'de', name: 'Німеччина' },
-    { code: 'fr', name: 'Франція' },
-    { code: 'ca', name: 'Канада' },
   ];
 
   const categories = [
@@ -131,28 +120,6 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
           )}
         </div>
 
-        {/* Country */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700">Країна</label>
-          <select
-            value={filters.country || ''}
-            onChange={(e) => handleFilterChange('country', e.target.value)}
-            className={inputClassName}
-          >
-            <option value="">Всі країни</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.code}>
-                {country.name}
-              </option>
-            ))}
-          </select>
-          {filters.country && (
-            <div className="text-xs text-blue-600">
-              Обрано: {countries.find(c => c.code === filters.country)?.name}
-            </div>
-          )}
-        </div>
-
         {/* Category */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700">Категорія</label>
@@ -204,26 +171,6 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
         </h3>
         
         <div className="grid grid-cols-1 gap-4">
-          {/* Sources */}
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">
-              Джерела
-              <span className="text-xs text-gray-500 ml-1">(розділені комами)</span>
-            </label>
-            <input
-              type="text"
-              value={filters.sources || ''}
-              onChange={(e) => handleFilterChange('sources', e.target.value)}
-              placeholder="Наприклад: bbc-news,cnn,reuters"
-              className={inputClassName}
-            />
-            {filters.sources && (
-              <div className="text-xs text-blue-600">
-                Джерела: {filters.sources.split(',').map(s => s.trim()).join(', ')}
-              </div>
-            )}
-          </div>
-
           {/* Domains */}
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">

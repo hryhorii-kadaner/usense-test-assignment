@@ -6,13 +6,13 @@ const router = Router();
 
 // Search articles with advanced filters
 router.get('/search', 
-  validateQueryParams(['q', 'pageSize', 'page', 'language', 'sortBy', 'sources', 'domains', 'excludeDomains', 'from', 'to', 'searchIn']),
+  validateQueryParams(['q', 'pageSize', 'page', 'language', 'sortBy', 'domains', 'excludeDomains', 'from', 'to', 'searchIn']),
   newsController.searchArticles
 );
 
 // Top headlines with filters
 router.get('/top-headlines',
-  validateQueryParams(['country', 'category', 'pageSize', 'page', 'sources']),
+  validateQueryParams(['category', 'pageSize', 'page']),
   newsController.getTopHeadlines
 );
 

@@ -16,8 +16,6 @@ export interface SearchParams {
   pageSize?: number;
   language?: string;
   category?: 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology';
-  country?: string;
-  sources?: string;
   domains?: string;
   excludeDomains?: string;
   from?: string;

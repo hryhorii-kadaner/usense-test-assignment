@@ -1,6 +1,5 @@
 export interface SearchParams {
   q?: string;
-  sources?: string;
   domains?: string;
   excludeDomains?: string;
   from?: string;
@@ -10,7 +9,6 @@ export interface SearchParams {
   pageSize?: number;
   page?: number;
   category?: 'business' | 'entertainment' | 'general' | 'health' | 'science' | 'sports' | 'technology';
-  country?: string;
   searchIn?: string; // title, description, content
 }
 

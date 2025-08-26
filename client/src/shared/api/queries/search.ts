@@ -1,5 +1,8 @@
 import { api } from '../../config/api';
-import { cleanParams, hasSearchRequiredParams, hasSearchOnlyFilters } from '../../utils';
+import { 
+  cleanParams, 
+  shouldUseSearchEndpoint 
+} from '../../utils';
 import type { ArticlesResponse, SearchParams } from '../../types';
 
 export const searchArticles = async (params: SearchParams): Promise<ArticlesResponse> => {
@@ -28,12 +31,10 @@ export const searchByKeywords = async (
 
 export const getArticlesByCategory = async (
   category: string, 
-  page = 1,
-  country = 'us'
+  page = 1
 ): Promise<ArticlesResponse> => {
   const params = {
     category: category === 'general' ? undefined : category,
-    country,
     page,
     pageSize: 20
   };
@@ -42,31 +43,31 @@ export const getArticlesByCategory = async (
 };
 
 export const searchWithAdvancedFilters = async (params: SearchParams): Promise<ArticlesResponse> => {
-  const hasRequired = hasSearchRequiredParams(params);
-  
-  const searchOnly = hasSearchOnlyFilters(params);
+  const useSearchEndpoint = shouldUseSearchEndpoint(params);
 
-  if (searchOnly && !hasRequired) {
-    return {
-      articles: [],
-      totalResults: 0,
-      page: params.page || 1,
-      pageSize: params.pageSize || 20
+  if (useSearchEndpoint) {
+    const searchParams = {
+      q: params.q || '*',
+      pageSize: params.pageSize,
+      page: params.page,
+      language: params.language,
+      domains: params.domains,
+      excludeDomains: params.excludeDomains,
+      from: params.from,
+      to: params.to,
+      searchIn: params.searchIn
+      // category НЕ поддерживается в search endpoint
     };
+    
+    return searchArticles(cleanParams(searchParams));
+  } else {
+    const topHeadlinesParams = {
+      category: params.category,
+      page: params.page,
+      pageSize: params.pageSize
+      // language, from, to, excludeDomains, searchIn НЕ поддерживаются в top-headlines
+    };
+    
+    return getTopHeadlines(cleanParams(topHeadlinesParams));
   }
-
-  if (hasRequired || searchOnly) {
-    return searchArticles(params);
-  }
-  
-  const topHeadlinesParams = {
-    country: params.country,
-    category: params.category,
-    sources: params.sources,
-    q: params.q,
-    page: params.page,
-    pageSize: params.pageSize
-  };
-  
-  return getTopHeadlines(cleanParams(topHeadlinesParams));
 };

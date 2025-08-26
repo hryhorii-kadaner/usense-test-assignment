@@ -13,7 +13,6 @@ class NewsApiService {
         page: params.page,
         language: params.language,
         sortBy: params.sortBy,
-        sources: params.sources,
         domains: params.domains,
         excludeDomains: params.excludeDomains,
         from: params.from,
@@ -26,7 +25,6 @@ class NewsApiService {
         pageSize: params.pageSize || 20,
         page: params.page || 1,
         filters: {
-          sources: params.sources,
           domains: params.domains,
           excludeDomains: params.excludeDomains,
           from: params.from,
@@ -73,16 +71,15 @@ class NewsApiService {
   async getTopHeadlines(params: SearchParams = {}): Promise<Article[]> {
     try {
       const queryParams = buildQueryParams({
-        country: params.country,
+        country: 'us', // Фиксированная страна для стабильности
         category: params.category,
-        sources: params.sources,
         q: params.q,
         pageSize: params.pageSize,
         page: params.page
       });
 
       console.log('Fetching top headlines:', {
-        country: params.country || 'us',
+        country: 'us',
         category: params.category,
         pageSize: params.pageSize || 20
       });

@@ -19,5 +19,6 @@ export {
   cleanParams,
   hasSearchRequiredParams,
   hasSearchOnlyFilters,
+  hasTopHeadlinesOnlyFilters,
   shouldUseSearchEndpoint
 } from './news-api';

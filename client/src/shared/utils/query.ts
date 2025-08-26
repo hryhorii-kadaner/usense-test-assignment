@@ -21,15 +21,13 @@ export const baseQueryOptions = {
 export const hasValidSearchParams = (params: SearchParams): boolean => {
   return Boolean(
     params.q ||
-    params.sources ||
     params.domains ||
     params.excludeDomains ||
     params.from ||
     params.to ||
     params.language ||
     params.searchIn ||
-    params.category ||
-    params.country
+    params.category
   );
 };
 
