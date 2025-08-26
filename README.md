@@ -6,7 +6,7 @@ A modern, full-stack news application built with React and Node.js, providing re
 
 - **Advanced News Search**: Comprehensive search functionality with keyword filtering
 - **Category Navigation**: Browse news by categories (business, technology, health, sports, etc.)
-- **Advanced Filtering**: Filter by country, language, date range, and search scope
+- **Advanced Filtering**: Filter by language, date range, and search scope
 - **Infinite Scrolling**: Seamless pagination for enhanced user experience
 - **Responsive Design**: Optimized for desktop and mobile devices
 - **Real-time Updates**: Live news data from NewsAPI integration
@@ -129,12 +129,11 @@ CORS_ORIGIN=http://localhost:5173
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/news/search` | GET | Search articles with advanced filters |
-| `/api/news/top-headlines` | GET | Retrieve top headlines by country/category |
+| `/api/news/top-headlines` | GET | Retrieve top headlines by category |
 
 ### Query Parameters
 
 - `q` - Search keywords
-- `country` - Country code (us, gb, fr, etc.)
 - `category` - News category (business, technology, health, etc.)
 - `language` - Language code (en, es, fr, etc.)
 - `from` / `to` - Date range (YYYY-MM-DD format)

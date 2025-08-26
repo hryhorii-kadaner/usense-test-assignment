@@ -6,7 +6,7 @@ A modern React application built with TypeScript, providing an intuitive interfa
 
 - **Advanced Search Interface**: Comprehensive search with real-time suggestions
 - **Category Navigation**: Intuitive browsing by news categories
-- **Advanced Filtering**: Multi-criteria filtering (country, language, date range)
+- **Advanced Filtering**: Multi-criteria filtering (language, date range)
 - **Infinite Scrolling**: Smooth pagination for enhanced user experience
 - **Responsive Design**: Mobile-first approach with desktop optimization
 - **Loading States**: Skeleton loaders and error boundaries
@@ -109,7 +109,7 @@ export const api = axios.create({
 ```typescript
 // Example usage
 const { data, isLoading, error } = useSearchArticles(query);
-const { data: headlines } = useTopHeadlines(country);
+const { data: headlines } = useTopHeadlines();
 ```
 
 ### Error Handling

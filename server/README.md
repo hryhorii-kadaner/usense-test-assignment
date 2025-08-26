@@ -109,7 +109,6 @@ GET /api/news/search
 | `page` | number | Page number | ❌ |
 | `language` | string | Language code (en, es, fr, etc.) | ❌ |
 | `sortBy` | string | Sort by: relevancy, popularity, publishedAt | ❌ |
-| `sources` | string | Comma-separated source ids | ❌ |
 | `domains` | string | Comma-separated domains | ❌ |
 | `excludeDomains` | string | Domains to exclude | ❌ |
 | `from` | string | Start date (YYYY-MM-DD) | ❌ |
@@ -146,9 +145,7 @@ GET /api/news/top-headlines
 **Query Parameters:**
 | Parameter | Type | Description | Required |
 |-----------|------|-------------|----------|
-| `country` | string | Country code (us, gb, fr, etc.) | ❌ |
 | `category` | string | Category (business, technology, etc.) | ❌ |
-| `sources` | string | Comma-separated source ids | ❌ |
 | `pageSize` | number | Articles per page (1-100) | ❌ |
 | `page` | number | Page number | ❌ |
 
@@ -307,7 +304,6 @@ describe('NewsController', () => {
   test('should return top headlines', async () => {
     const response = await request(app)
       .get('/api/news/top-headlines')
-      .query({ country: 'us' })
       .expect(200);
 
     expect(response.body.articles).toBeDefined();

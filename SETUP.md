@@ -72,7 +72,7 @@ This command will:
 
 Open your browser and navigate to:
 - **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:3001/api/news/top-headlines?country=us
+- **Backend API**: http://localhost:3001/api/news/top-headlines
 
 ## 🔧 Development Commands
 
@@ -126,7 +126,7 @@ npm run install:all
 #### 2. NewsAPI Key Issues
 ```bash
 # Test your API key directly
-curl "https://newsapi.org/v2/top-headlines?country=us&apiKey=YOUR_API_KEY"
+curl "https://newsapi.org/v2/top-headlines?apiKey=YOUR_API_KEY"
 ```
 
 #### 3. Port Conflicts
