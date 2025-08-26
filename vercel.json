@@ -5,8 +5,7 @@
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "buildCommand": "npm run build"
+        "distDir": "dist"
       }
     },
     {
@@ -23,10 +22,5 @@
       "src": "/(.*)",
       "dest": "/client/dist/$1"
     }
-  ],
-  "functions": {
-    "server/src/vercel.ts": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
