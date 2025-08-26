@@ -1,0 +1,22 @@
+{
+  "name": "usense-news-app",
+  "version": "1.0.0",
+  "description": "World News Web Application - Usense Test Assignment",
+  "scripts": {
+    "build": "npm run client:build && npm run server:build",
+    "start": "concurrently \"npm run server:start\" \"npm run client:preview\"",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "client:preview": "cd client && npm run preview",
+    "server:dev": "cd server && npm run dev",
+    "server:build": "cd server && npm run build",
+    "server:start": "cd server && npm run start",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "author": "Hryhorii Kadaner",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
